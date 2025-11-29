@@ -1,0 +1,28 @@
+name: docker-pull-demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: self-hosted
+
+    steps:
+      - name: 打印当前时间
+        run: date
+
+      - name: 第一次看看本地是否已有镜像
+        run: |
+          echo "== docker images alpine:3.18 =="
+          docker images alpine:3.18 || true
+
+      - name: 执行 docker pull
+        run: |
+          echo "== docker pull alpine:3.18 =="
+          docker pull alpine:3.18
+
+      - name: 再看一次本地镜像
+        run: |
+          echo "== docker images alpine:3.18 =="
+          docker images alpine:3.18
+
