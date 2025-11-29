@@ -1,0 +1,30 @@
+name: CI on self-hosted runner
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-on-self-hosted:
+    # 假设你没有加额外标签，只用基础的 self-hosted / Linux / X64
+    runs-on: [self-hosted, Linux, X64]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Show runner info
+        run: |
+          echo "Running on self-hosted runner"
+          echo "Hostname: $(hostname)"
+          echo "Current user: $(whoami)"
+          echo "OS version:"
+          cat /etc/os-release || uname -a
+
+      - name: Run sample test
+        run: |
+          echo "Here you can run your build or tests"
+          # 比如: npm test / mvn test / go test ./... 等
+
