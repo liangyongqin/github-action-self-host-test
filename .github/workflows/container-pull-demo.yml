@@ -8,7 +8,7 @@ jobs:
     runs-on: self-hosted
 
     container:
-      image: alpine:3.18
+      image: ghcr.io/zswatch/zswatch-ci:zswatch_v0.28.4
 
     steps:
       - name: 打印容器里的系统信息
