@@ -1,0 +1,20 @@
+name: container-pull-demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  use-container:
+    runs-on: self-hosted
+
+    container:
+      image: alpine:3.18
+
+    steps:
+      - name: 打印容器里的系统信息
+        run: |
+          echo "== /etc/os-release =="
+          cat /etc/os-release
+          echo "== hostname =="
+          hostname
+
